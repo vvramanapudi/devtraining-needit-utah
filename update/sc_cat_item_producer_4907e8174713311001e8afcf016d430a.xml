@@ -6,8 +6,8 @@
         <availability>on_desktop</availability>
         <billable>false</billable>
         <can_cancel>false</can_cancel>
-        <category/>
-        <checked_out/>
+        <category display_value="Facilities">d25201c8c611227a00667da13c6d33af</category>
+        <checked_out>false</checked_out>
         <cost>0</cost>
         <custom_cart/>
         <delivery_plan display_value="DEFAULT">523da512c611228900811a37c97c2014</delivery_plan>
@@ -57,7 +57,7 @@
         <price>0</price>
         <published_ref/>
         <recurring_frequency/>
-        <redirect_url>catalog_home</redirect_url>
+        <redirect_url>generated_record</redirect_url>
         <request_method/>
         <roles/>
         <save_options/>
@@ -68,45 +68,36 @@
 * To access the variables, use `producer.var1` where var1 is the name of the variable
 * To access the Record Producer use `cat_item`
 */]]></save_script>
-        <sc_catalogs/>
+        <sc_catalogs>e0d08b13c3330100c8b837659bba8fb4</sc_catalogs>
         <sc_ic_item_staging/>
         <sc_ic_version/>
         <sc_template/>
-        <script><![CDATA[alert("In record producer script");
-current.short_description = "Facility request from " + producer.u_requested_for.getDisplayValue() + " on " + producer.u_when_needed;
+        <script><![CDATA[current.short_description = "Facility request from " + producer.u_requested_for.getDisplayValue() + " on " + cat_item.sys_created_on;
 current.description = current.short_description;
 
-var isMobile = GlideMobileExtensions.getDeviceType() == 'm';
-var link = isMobile ? '#/!list/incident/q:active=true%5Ecaller_id=javascript:gs.user_id()%5EEQ' : 'home.do';
+var link = 'home.do';
 
 var s = 'Request for facility is created<br/>';
 s += 'The Facility department will confirm with details<br/>';
-if (isMobile)
-	s += 'You can track status from this <a href="' + link + '">List</a> <br/>';
-else
-	s += 'You can track status from the <a href="' + link + '">Homepage</a> <br/>';
+s += 'You can track status from the <a href="' + link + '">Homepage</a> <br/>';
 gs.addInfoMessage(s);
-
-var incRPUtil = new LinkRecordProducerToIncident();
-incRPUtil.linkRecordProducerToParentIncident(RP.getParameterValue('sysparm_parent_sys_id'), current);
-
 ]]></script>
         <short_description>To reserve facilities</short_description>
         <show_variable_help_on_load>false</show_variable_help_on_load>
         <start_closed>false</start_closed>
-        <state/>
+        <state>published</state>
         <sys_class_name>sc_cat_item_producer</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-12-29 02:54:18</sys_created_on>
         <sys_id>4907e8174713311001e8afcf016d430a</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_mod_count>28</sys_mod_count>
         <sys_name>Request Facilities</sys_name>
         <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
         <sys_policy/>
         <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
         <sys_update_name>sc_cat_item_producer_4907e8174713311001e8afcf016d430a</sys_update_name>
-        <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2023-12-29 04:18:12</sys_updated_on>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-12-29 05:52:22</sys_updated_on>
         <table_name>x_58872_needit_needit</table_name>
         <taxonomy_topic/>
         <template display_value="Request_Type_Template">b9da685b4713311001e8afcf016d4339</template>
@@ -114,7 +105,7 @@ incRPUtil.linkRecordProducerToParentIncident(RP.getParameterValue('sysparm_paren
         <type>item</type>
         <use_sc_layout>true</use_sc_layout>
         <vendor/>
-        <version>15</version>
+        <version>30</version>
         <view/>
         <visible_bundle>true</visible_bundle>
         <visible_guide>true</visible_guide>
